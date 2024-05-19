@@ -1,14 +1,10 @@
 from facenet_pytorch import MTCNN, InceptionResnetV1
-from PIL import Image  # Adicionar esta linha
+from PIL import Image  
 import cv2
 import torch
 import numpy as np
 import os
 
-# Restante do código...
-
-
-# Inicializar o detector MTCNN
 mtcnn = MTCNN()
 
 # Inicializar o modelo InceptionResnetV1 pré-treinado
