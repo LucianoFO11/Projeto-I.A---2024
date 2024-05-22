@@ -5,16 +5,16 @@ import torch
 import numpy as np
 import os
 
-print('Rodando...')
+print('Rodando...') #coloquei isso só pra ter certeza que ao menos tava iniciando
 
-# Inicializar o detector MTCNN
+# inicia o MTCNN
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 mtcnn = MTCNN(keep_all=True, device=device)
 
-# Inicializar o modelo InceptionResnetV1 pré-treinado
+# inicioa o modelo ResnetV1 pré-treinado
 resnet = InceptionResnetV1(pretrained='vggface2').eval().to(device)
 
-# Pasta contendo as fotos das pessoas conhecidas
+# pasta contendo as fotos das pessoas conhecidas
 known_faces_folder = 'C:\\Users\\lucia\\Desktop\\rostos'
 
 # Carregar as imagens das pessoas conhecidas e suas respectivas embeddings faciais
@@ -53,7 +53,7 @@ while True:
     try:
         boxes, _ = mtcnn.detect(rgb_frame)
 
-        # Verificar se alguma face foi detectada
+        # Verificar se algum rosto foi detectado
         if boxes is not None:
             for box in boxes:
                 (x1, y1, x2, y2) = [int(coord) for coord in box]
@@ -87,6 +87,6 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Liberar recursos e fechar janelas ao sair do loop
+
 cap.release()
 cv2.destroyAllWindows()
